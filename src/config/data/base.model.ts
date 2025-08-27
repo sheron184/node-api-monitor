@@ -9,12 +9,10 @@ export class BaseModel {
     const dbPath = path.resolve(__dirname, 'db.sqlite3');
     this.db = new Database(dbPath);
     this._table = table;
+    this.init();
   }
 
   init() {
-    this.db.exec("DROP TABLE IF EXISTS request");
-    this.db.exec("DROP TABLE IF EXISTS request");
-
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS request (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -62,7 +60,6 @@ export class BaseModel {
 
     return result.lastInsertRowid as number;
   }
-
 
   update(data: Record<string, any>, where: Record<string, any>): void {
     if (!this._table) throw new Error('Table name is not set.');

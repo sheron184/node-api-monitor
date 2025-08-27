@@ -15,8 +15,8 @@ export class ExpressAdapter {
 		this.app = app;
 		this.options = options;
 		// Setup sqlite db file
-		const baseModel = new BaseModel('');
-		baseModel.init();
+		// const baseModel = new BaseModel('');
+		// baseModel.init();
 	}
 
 	observe() {
